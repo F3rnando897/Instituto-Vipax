@@ -1,43 +1,44 @@
-#eventos{
-  display: flex;
-  flex-wrap: wrap;
+#eventos,
+#index {
   flex-direction: row;
-  
-  & section{
-    padding-right: 2rem;
+  flex-wrap: wrap;
+  justify-content: stretch;
+  justify-content: space-evenly;
+
+  & section {
+    width: 50%;
+    max-width: 350px;
+    min-width: 250px;
     display: flex;
+    flex-direction: column;
+    justify-content: start;
+    align-items: flex-start;
     gap: 1rem;
-  
+
     & img {
-      border-radius: .5em;
+      border-radius: 0.5em;
+      max-height: 250px;
+      max-width: 100%;
+      object-fit: cover;
+    }
+
+    & div {
+      width: 100%;
+      flex-grow: 2;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+
+      & button {
+        align-self: flex-end;
+        flex-grow: 0;
+      }
+    }
+
+    & h2 {
+      text-wrap: wrap;
     }
   }
-
-}
-
-.btn-saiba-mais {
-    background: linear-gradient(135deg, #2c5530, #4a7c59);
-    color: white;
-    border: none;
-    padding: 8px 16px;
-    border-radius: 20px;
-    font-size: 14px;
-    font-weight: 500;
-    cursor: pointer;
-    transition: all 0.3s ease;
-    text-decoration: none;
-    display: inline-block;
-    margin-top: 10px;
-}
-
-.btn-saiba-mais:hover {
-    background: linear-gradient(135deg, #1e3a22, #2c5530);
-    transform: translateY(-2px);
-    box-shadow: 0 4px 12px rgba(0,0,0,0.2);
-}
-
-.btn-saiba-mais:active {
-    transform: translateY(0);
 }
 
 #eventos dialog {
