@@ -1,0 +1,57 @@
+#eventos{
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: row;
+  
+  & section{
+    padding-right: 2rem;
+    display: flex;
+    gap: 1rem;
+  
+    & img {
+      border-radius: .5em;
+    }
+  }
+
+}
+
+.btn-saiba-mais {
+    background: linear-gradient(135deg, #2c5530, #4a7c59);
+    color: white;
+    border: none;
+    padding: 8px 16px;
+    border-radius: 20px;
+    font-size: 14px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    text-decoration: none;
+    display: inline-block;
+    margin-top: 10px;
+}
+
+.btn-saiba-mais:hover {
+    background: linear-gradient(135deg, #1e3a22, #2c5530);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+}
+
+.btn-saiba-mais:active {
+    transform: translateY(0);
+}
+
+#eventos dialog {
+  padding: 1rem;
+  border-radius: 1rem;
+  border: 0;
+
+  position: fixed;
+  transform: translate(-50%, -50%);
+  top: 50%;
+  left: 50%;
+
+  &::backdrop {
+    background-color: #000000a7;
+    backdrop-filter: blur(5px);
+  }
+}
