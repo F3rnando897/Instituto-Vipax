@@ -43,6 +43,7 @@ include "header.php";
     </section>
   </main>
 
+<script src="js/slide.js" type="module"></script>
 <?php 
 include "footer.php";
 ?>
