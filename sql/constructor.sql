@@ -27,7 +27,7 @@ CREATE TABLE `eventos_futuros` (
 
 CREATE TABLE `galeria` (
   `id` int(11) NOT NULL,
-  `id_evento` int(11) NOT NULL,
+  `id_eventos_comuns` int(11) NOT NULL,
   `path` text NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
