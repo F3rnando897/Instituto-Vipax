@@ -1,23 +1,35 @@
 <?php 
 include "header.php";
+include 'config/conexao.php';
+
+
 ?>
   
   <main id="eventos">
+    <?php 
+    
+    $sql_code = "SELECT * FROM eventos_comuns";
+    $query_eventos_comuns = $mysqli->query($sql_code);
+    while ($row = $query_eventos_comuns->fetch_assoc()) {
+    ?>
     <section class="eventos">
-        <img src="assets/cachoeiera2.jpg" alt="">
+        <img src=<?= '"' . $row['fotos'] . '"'; ?> alt="">
         <div>
-            <h2>Pizza na roça</h2>
+            <h2><?= $row['nome']; ?></h2>
             <button type="button" class="btn-saiba-mais">Saiba mais</button>
             <dialog>
               <div class="content">
 
-                <h2>Pizza na roça</h2>
-                <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Ea similique nihil assumenda deleniti corrupti quasi. Esse perferendis suscipit ab magnam! Nihil, explicabo incidunt error sapiente, ex placeat consequuntur commodi aperiam delectus odit hic saepe obcaecati maiores sunt tempore voluptatum aspernatur.</p>
+                <h2><?= $row['nome']; ?></h2>
+                <p><?= $row['descricao'];?></p>
               </div>
             </dialog>
         </div>
     </section>
-    <section class="eventos">
+    <?php 
+    } 
+    ?>
+    <!-- <section class="eventos">
         <img src="assets/pizza.jpg">
         <div>
             <h2>Caminhada da lua cheia</h2>
@@ -27,31 +39,7 @@ include "header.php";
                 <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Ea similique nihil assumenda deleniti corrupti quasi. Esse perferendis suscipit ab magnam! Nihil, explicabo incidunt error sapiente, ex placeat consequuntur commodi aperiam delectus odit hic saepe obcaecati maiores sunt tempore voluptatum aspernatur.</p>
             </dialog>
         </div>
-    </section>
-    <section class="eventos">
-        <img src="assets/montanha.jpg" alt="">
-        <div>
-            <h2>Curso vipax</h2>
-            <button type="button" class="btn-saiba-mais">Saiba mais</button>
-            <dialog>
-                <h2>Descrição:</h2>
-                <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Ea similique nihil assumenda deleniti corrupti quasi. Esse perferendis suscipit ab magnam! Nihil, explicabo incidunt error sapiente, ex placeat consequuntur commodi aperiam delectus odit hic saepe obcaecati maiores sunt tempore voluptatum aspernatur.</p>
-            </dialog>
-        </div>
-    </section>
-    <section class="eventos">
-        <img src="assets/cachoeiera2.jpg">
-        <div>
-            <h2>nome evento</h2>
-            <button type="button" class="btn-saiba-mais">Saiba mais</button>
-            <dialog>
-                <h2>Descrição:</h2>
-                <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Ea similique nihil assumenda deleniti corrupti quasi. Esse perferendis suscipit ab magnam! Nihil, explicabo incidunt error sapiente, ex placeat consequuntur commodi aperiam delectus odit hic saepe obcaecati maiores sunt tempore voluptatum aspernatur.</p>
-            </dialog>
-</div>
-    </section>
-
-
+    </section> -->
 
   </main>
 
