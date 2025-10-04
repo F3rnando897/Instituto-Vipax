@@ -1,11 +1,11 @@
-.galeria {
+#pagina_galeria .galeria {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
   gap: 1rem;
   padding: 2rem;
 }
 
-.galeria img {
+#pagina_galeria .galeria img {
   width: 100%;
   height: 200px;
   object-fit: cover;
@@ -15,12 +15,12 @@
   box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.2);
 }
 
-.galeria img:hover {
+#pagina_galeria .galeria img:hover {
   transform: scale(1.05);
 }
 
 /* Modal com :target */
-.modal {
+#pagina_galeria .modal {
   display: flex;
   position: fixed;
   z-index: 1000;
@@ -33,14 +33,14 @@
   justify-content: center;
 }
 
-.modal img {
+#pagina_galeria .modal img {
   max-width: 80%;
   max-height: 80vh;
   border-radius: 1rem;
   box-shadow: 10px 10px 30px rgba(0, 0, 0, 0.5);
 }
 
-.fechar {
+#pagina_galeria .fechar {
   position: absolute;
   top: 20px;
   right: 35px;
@@ -49,8 +49,7 @@
   text-decoration: none;
 }
 
-.prev,
-.next {
+#pagina_galeria :is(.prev, .next) {
   position: absolute;
   top: 50%;
   transform: translateY(-50%);
@@ -63,15 +62,15 @@
   border-radius: 50%;
 }
 
-.prev {
+#pagina_galeria .prev {
   left: 20px;
 }
-.next {
+#pagina_galeria .next {
   right: 20px;
 }
 
-.prev:hover,
-.next:hover {
+#pagina_galeria .prev:hover,
+#pagina_galeria .next:hover {
   background: rgba(0, 0, 0, 0.6);
   color: var(--destaque);
 }

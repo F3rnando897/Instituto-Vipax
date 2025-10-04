@@ -2,44 +2,55 @@
 include "header.php";
 include 'config/conexao.php';
 
-
 ?>
   
   <main id="eventos">
     <?php 
     
-    $sql_code = "SELECT * FROM eventos_comuns";
+    $sql_code = "SELECT eventos_comuns.nome AS nome,
+                eventos_comuns.id AS id,
+                galeria.path AS foto,
+                eventos_comuns.descricao AS descricao 
+                FROM eventos_comuns, galeria 
+                WHERE eventos_comuns.id_galeria = galeria.id 
+                OR galeria.id_eventos_comuns = eventos_comuns.id;";
     $query_eventos_comuns = $mysqli->query($sql_code);
     while ($row = $query_eventos_comuns->fetch_assoc()) {
     ?>
     <section class="eventos">
-        <img src=<?= '"' . $row['fotos'] . '"'; ?> alt="">
-        <div>
-            <h2><?= $row['nome']; ?></h2>
-            <button type="button" class="btn-saiba-mais">Saiba mais</button>
-            <dialog>
+        <img src=<?= '"' . $row['foto'] . '"'; ?> alt="">
+        <div class="conteudo">
+          <h2><?= $row['nome']; ?></h2>
+          <a href="eventos.php?evento=<?= $row['id'] ?>" type="button" class="btn-saiba-mais">Saiba mais</a>
+          <div class='modal <?php 
+            if (isset($_GET['evento']) && $_GET['evento'] == $row['id']) {
+              unset($_GET);
+              echo "open";
+            }?>'>
               <div class="content">
-
                 <h2><?= $row['nome']; ?></h2>
+                <a href="eventos.php">&times</a>
                 <p><?= $row['descricao'];?></p>
               </div>
-            </dialog>
+              <?php 
+              $sql_code = "SELECT * FROM galeria WHERE id_eventos_comuns = ". $row['id'];
+              $query_galeria = $mysqli->query($sql_code);
+              if ($query_galeria->num_rows > 0) {
+              ?>
+              <div class="galeria">
+                <?php while ($foto = $query_galeria->fetch_assoc()){?>
+                
+                  <img src="<?= $foto['path'] ?>">
+
+                <?php }?>
+              </div>
+              <?php } ?>
+            </div>
         </div>
     </section>
     <?php 
     } 
     ?>
-    <!-- <section class="eventos">
-        <img src="assets/pizza.jpg">
-        <div>
-            <h2>Caminhada da lua cheia</h2>
-            <button type="button" class="btn-saiba-mais">Saiba mais</button>
-            <dialog>
-                <h2>Caminhada da lua cheia</h2>
-                <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Ea similique nihil assumenda deleniti corrupti quasi. Esse perferendis suscipit ab magnam! Nihil, explicabo incidunt error sapiente, ex placeat consequuntur commodi aperiam delectus odit hic saepe obcaecati maiores sunt tempore voluptatum aspernatur.</p>
-            </dialog>
-        </div>
-    </section> -->
 
   </main>
 

@@ -4,44 +4,47 @@
   flex-wrap: wrap;
   justify-content: stretch;
   justify-content: space-evenly;
+}
 
-  & section {
-    width: 50%;
-    max-width: 350px;
-    min-width: 250px;
+:is(#eventos, #index) section {
+  width: 50%;
+  max-width: 350px;
+  min-width: 250px;
+  display: flex;
+  flex-direction: column;
+  justify-content: start;
+  align-items: flex-start;
+  gap: 1rem;
+
+  & img {
+    border-radius: 0.5em;
+    max-height: 250px;
+    max-width: 100%;
+    object-fit: cover;
+  }
+
+  & div.conteudo {
+    width: 100%;
+    flex-grow: 2;
     display: flex;
     flex-direction: column;
-    justify-content: start;
-    align-items: flex-start;
-    gap: 1rem;
+    justify-content: space-between;
 
-    & img {
-      border-radius: 0.5em;
-      max-height: 250px;
-      max-width: 100%;
-      object-fit: cover;
+    & button {
+      align-self: flex-end;
+      flex-grow: 0;
     }
+  }
 
-    & div {
-      width: 100%;
-      flex-grow: 2;
-      display: flex;
-      flex-direction: column;
-      justify-content: space-between;
-
-      & button {
-        align-self: flex-end;
-        flex-grow: 0;
-      }
-    }
-
-    & h2 {
-      text-wrap: wrap;
-    }
+  & h2 {
+    text-wrap: wrap;
   }
 }
 
-#eventos dialog {
+#eventos .modal {
+  max-height: 80dvh;
+  width: calc(100% - 8rem);
+  overflow-y: scroll;
   padding: 1rem;
   border-radius: 1rem;
   border: 0;
@@ -51,8 +54,37 @@
   top: 50%;
   left: 50%;
 
+  background-color: var(--light);
+
+  display: none;
+  gap: 2rem;
+  flex-direction: column;
+
   &::backdrop {
     background-color: #000000a7;
     backdrop-filter: blur(5px);
   }
+
+  & h2 {
+    margin-bottom: 1rem;
+  }
+
+  & a {
+    font-size: 2rem;
+    color: var(--mainColor);
+    text-decoration: none;
+    position: absolute;
+    top: 0.5rem;
+    right: 1rem;
+  }
+}
+
+#eventos .modal.open {
+  display: flex;
+}
+
+#eventos .modal .galeria {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
 }

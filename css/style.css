@@ -83,6 +83,23 @@ main#index {
   }
 }
 
+main#index section .actions {
+  display: flex;
+  align-self: end;
+  justify-content: center;
+
+  & a {
+    font-size: 16px;
+    padding: 0.5em 1em;
+    transition: 0.5s ease;
+    border-radius: 1em;
+  }
+
+  & a:not(.btn-saiba-mais):hover {
+    background-color: rgba(0, 0, 0, 0.1);
+  }
+}
+
 main section.objetivos {
   padding: 2rem;
   & h2 {
@@ -91,11 +108,14 @@ main section.objetivos {
   }
 }
 
+.saiba-mais {
+  color: var(--dark);
+  text-decoration: none;
+}
+
 .btn-saiba-mais {
   font-size: 16px;
-  margin-top: 1rem;
   padding: 0.5em 1em;
-
   background-color: var(--mainColor);
   color: var(--light);
   border: none;
@@ -107,7 +127,8 @@ main section.objetivos {
 
   cursor: pointer;
   transition: all 0.3s ease;
-  display: inline-block;
+  display: inline;
+  flex-grow: 0;
 }
 
 .btn-saiba-mais:hover {
