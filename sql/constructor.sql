@@ -60,7 +60,7 @@ ALTER TABLE `eventos_futuros`
 
 ALTER TABLE `galeria`
   ADD PRIMARY KEY (`id`),
-  ADD KEY `id_evento` (`id_evento`);
+  ADD KEY `id_eventos_comuns` (`id_eventos_comuns`);
 
 ALTER TABLE `objetivos`
   ADD PRIMARY KEY (`id`);
@@ -96,7 +96,7 @@ ALTER TABLE `eventos_futuros`
   ADD CONSTRAINT `eventos_futuros_ibfk_1` FOREIGN KEY (`id_eventos_comuns`) REFERENCES `eventos_comuns` (`id`);
 
 ALTER TABLE `galeria`
-  ADD CONSTRAINT `galeria_ibfk_1` FOREIGN KEY (`id_evento`) REFERENCES `eventos_comuns` (`id`);
+  ADD CONSTRAINT `galeria_ibfk_1` FOREIGN KEY (`id_eventos_comuns`) REFERENCES `eventos_comuns` (`id`);
 
 ALTER TABLE `vagas_reservadas`
   ADD CONSTRAINT `vagas_reservadas_ibfk_1` FOREIGN KEY (`id_evento`) REFERENCES `eventos_futuros` (`id`),
