@@ -3,7 +3,7 @@ include "header.php";
 include "config/conexao.php";
 ?>
 
-  <main>
+  <main id="pagina_galeria">
     <section class="galeria">
       <?php 
         $ids = [];
@@ -18,15 +18,14 @@ include "config/conexao.php";
       </a>
       <?php } ?>
     </section>
-  </main>
-
-  <?php if (isset($_GET['img'])){
+    
+    <?php if (isset($_GET['img'])){
     $stmt = $mysqli->prepare("SELECT path from galeria WHERE id = ?");
     $stmt->bind_param('s', $_GET['img']);
     $stmt->execute();
     $result = $stmt->get_result();
     $row = $result->fetch_assoc();
-
+    
     $idsPos = array_search($_GET['img'], $ids);
     var_dump($ids);
     var_dump($idsPos);
@@ -45,8 +44,9 @@ include "config/conexao.php";
     <img src=<?= "'{$row['path']}'";?> alt="Floresta 1">
   </div>
   <?php }?>
-
-<?php 
+  
+  </main>
+  <?php 
 include "footer.php";
 ?>
 
