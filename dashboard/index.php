@@ -1,32 +1,7 @@
 <?php
-include "config/conexao.php";
-include "dashBoardFuncoes/crudEventosComuns.php";
-include "dashBoardFuncoes/crudEventosFuturos.php";
-include "dashBoardFuncoes/crudObjetivos.php";
-
-
-if(isset($_FILES['fotos_evento'])){
-    $fotos = $_FILES['fotos_evento'];
-    if($fotos['size'] > 2097152){
-        echo "O arquivo é muito grande. Máximo permitido é 2MB.";
-        
-    }  
-    if($fotos['error']){
-        echo "Erro ao enviar o arquivo. Código do erro: " . $fotos['error'];
-        exit();
-    }  
-
-    $pasta = "uploads/";
-    $nomeDoArquivo = $fotos['name'];
-    $novoNomeDoArquivo = uniqid();
-    $extensao = strtolower(pathinfo($nomeDoArquivo, PATHINFO_EXTENSION));
-    if($extensao != "jpg" && $extensao != "jpeg" && $extensao != "png"){
-        die( "Apenas arquivos JPG, JPEG e PNG são permitidos.");
-    }
-
-    $deu_certo = move_uploaded_file($fotos['tmp_name'], $pasta . $novoNomeDoArquivo . "." . $extensao);
-    
-}
+include "../config/conexao.php"; // sobe um nível para achar a pasta config
+include "./eventos_comuns/index.php";
+include "./eventos_futuros/index.php";
 ?>
 
 
@@ -35,8 +10,8 @@ if(isset($_FILES['fotos_evento'])){
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <link rel="stylesheet" href="css/dashBoard.css">
-    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="../css/dashBoard.css">
+    <link rel="stylesheet" href="../css/style.css">
 </head>
 
 
@@ -87,15 +62,20 @@ if(isset($_FILES['fotos_evento'])){
     <div>
         <h2><?= $row['nome']; ?></h2>
         <p><?= $row['descricao'];?></p>
+        <?php var_dump($row); ?>
         <?php 
         while ($foto = $query_eventos_foto->fetch_assoc()) {
         ?>
-            <img src="<?= $foto['path']; ?>" alt="Foto do Evento" style="width:200px; height:auto; margin-right:10px;">
+            <img src="../<?= $foto['path']; ?>" alt="Foto do Evento" style="width:200px; height:auto; margin-right:10px;">
         <?php 
         } 
         ?>
-        <a id ="Editar">Editar</a>
-        <a id ="Editar">Excluir</a>
+        <form action="dashboard.php" method="POST">
+            <button type="submit" name="btn-editar-evento-comum" value="<?= $row['id']; ?>">Editar</button>
+        </form>
+        <form action="dashboard.php" method="POST">
+            <button type="submit" name="btn-excluir-evento-comum" value="<?= $row['id']; ?>">Excluir</button>
+        </form>
     </div>
 </section>
 <?php 
@@ -165,5 +145,3 @@ if(isset($_FILES['fotos_evento'])){
     </div>
 
 </div>
-
- <script src="js/dashboard.js"></script>
