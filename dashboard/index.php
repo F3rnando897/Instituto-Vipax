@@ -2,8 +2,6 @@
 include "../config/conexao.php"; // sobe um nível para achar a pasta config
 include "./eventos_comuns/index.php";
 include "./eventos_futuros/index.php";
-include "./galeria/index.php";
-include "./objetivos/index.php";
 ?>
 
 
