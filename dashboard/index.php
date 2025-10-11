@@ -1,9 +1,32 @@
 <?php
 include "config/conexao.php";
-include "dashboard/eventos_comuns/eventos_comuns.php";
-include "dashboard/eventos_futuros/eventos_futuros.php";
-include "dashboard/objetivos/objetivos.php";
+include "dashBoardFuncoes/crudEventosComuns.php";
+include "dashBoardFuncoes/crudEventosFuturos.php";
+include "dashBoardFuncoes/crudObjetivos.php";
 
+
+if(isset($_FILES['fotos_evento'])){
+    $fotos = $_FILES['fotos_evento'];
+    if($fotos['size'] > 2097152){
+        echo "O arquivo é muito grande. Máximo permitido é 2MB.";
+        
+    }  
+    if($fotos['error']){
+        echo "Erro ao enviar o arquivo. Código do erro: " . $fotos['error'];
+        exit();
+    }  
+
+    $pasta = "uploads/";
+    $nomeDoArquivo = $fotos['name'];
+    $novoNomeDoArquivo = uniqid();
+    $extensao = strtolower(pathinfo($nomeDoArquivo, PATHINFO_EXTENSION));
+    if($extensao != "jpg" && $extensao != "jpeg" && $extensao != "png"){
+        die( "Apenas arquivos JPG, JPEG e PNG são permitidos.");
+    }
+
+    $deu_certo = move_uploaded_file($fotos['tmp_name'], $pasta . $novoNomeDoArquivo . "." . $extensao);
+    
+}
 ?>
 
 
@@ -142,3 +165,5 @@ include "dashboard/objetivos/objetivos.php";
     </div>
 
 </div>
+
+ <script src="js/dashboard.js"></script>
