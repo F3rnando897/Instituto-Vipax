@@ -20,7 +20,6 @@
           <li><a href="index.php">Início</a></li>
           <li><a href="eventos.php">Eventos</a></li>
           <li><a href="objetivos.php">Objetivos</a></li>
-          <!-- <li><a href="agenda.php">Agenda</a></li> -->
           <li><a href="galeria.php">Galeria</a></li>
           <li><a href="login.php">Login</a></li>
         </ul>

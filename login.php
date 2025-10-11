@@ -1,5 +1,11 @@
 <?php 
 include "header.php";
+
+if (isset($_POST['email'])) {
+  $email = $_POST['email'];
+  $senha = $_POST['senha'];
+  
+}
 ?>
   
 <main>
@@ -13,11 +19,11 @@ include "header.php";
         <form id="loginForm" method="POST">
           <div class="form-group">
             <label for="email">E-mail</label>
-            <input type="email" id="email" name="email" required>
+            <input type="email" name="email" required>
           </div>
           <div class="form-group">
             <label for="password">Senha</label>
-            <input type="password" id="password" name="password" required>
+            <input type="password" name="senha" required>
           </div>
           <button type="submit" class="login-btn">Entrar</button>
         </form>

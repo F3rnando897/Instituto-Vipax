@@ -12,6 +12,7 @@
   --mainColor: #284026;
   --secColor: #a3b18a;
   --destaque: #6a994e;
+  --red: #9f454d;
 
   --padding: 4rem;
 }
@@ -19,6 +20,12 @@
 *::selection {
   color: var(--destaque);
   background-color: var(--dark);
+}
+
+.error {
+  color: var(--red);
+  font-weight: 700;
+  font-size: 0.7em;
 }
 
 /* header */
