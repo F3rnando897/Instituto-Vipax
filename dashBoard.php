@@ -71,8 +71,8 @@ include "dashboard/objetivos/objetivos.php";
         <?php 
         } 
         ?>
-        <a id ="Editar">Editar</a>
-        <a id ="Editar">Excluir</a>
+        <button type="submit" name="btn-editar-evento-comum" value="<?= $row['id']; ?>">Editar</button>
+        <button type="submit" name="btn-excluir-evento-comum" value="<?= $row['id']; ?>">Excluir</button>
     </div>
 </section>
 <?php 
