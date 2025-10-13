@@ -17,14 +17,30 @@
 <body>
 
   <header>
-    <h1>Vipax</h1>
+    <div>
+      <h1>Vipax</h1>
+      <?php 
+      if (!isset($_SESSION)){
+        session_start();
+      }
+      if (isset($_SESSION['nome'])) {
+        echo "<p>Bem vindo, ". $_SESSION['nome'] ."</p>";
+      }
+      ?>
+      
+    </div>
     <ul>
       <li><a href="index.php">Início</a></li>
       <li><a href="eventos.php">Eventos</a></li>
       <li><a href="objetivos.php">Objetivos</a></li>
-      <!-- <li><a href="agenda.php">Agenda</a></li> -->
       <li><a href="galeria.php">Galeria</a></li>
-      <li><a href="login.php">Login</a></li>
+      <?php 
+      if (!isset($_SESSION['nome'])) {
+        echo "<li><a href='login.php'>Login</a></li>";
+      } else {
+        echo "<li><a href='logout.php'>Sair</a></li>";
+      }
+      ?>
 
     </ul>
   </header>

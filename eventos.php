@@ -1,7 +1,9 @@
 <?php 
 include "header.php";
 include 'config/conexao.php';
-
+if (!isset($_SESSION)){
+  session_start();
+}
 ?>
   
   <main id="eventos">

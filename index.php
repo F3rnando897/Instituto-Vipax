@@ -2,6 +2,10 @@
 include "./config/conexao.php";
 include "config/funcs.php";
 include "header.php";
+
+if (!isset($_SESSION)){
+  session_start();
+}
 ?>
 
   <?php 
