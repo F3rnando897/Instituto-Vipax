@@ -1,9 +1,11 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
 <?php
 include "../config/conexao.php"; // sobe um nível para achar a pasta config
 include "./eventos_comuns/index.php";
 include "./eventos_futuros/index.php";
 ?>
-
 
 
 <head>
@@ -13,9 +15,10 @@ include "./eventos_futuros/index.php";
     <link rel="stylesheet" href="../css/dashBoard.css">
     <link rel="stylesheet" href="../css/style.css">
 </head>
-
-
-<!-- Sidebar -->
+<body>
+    
+    
+    <!-- Sidebar -->
 <div class="sidebar">
     <h2 style="text-align:center;">Dashboard</h2>
     <a href="#">Início</a>
@@ -55,7 +58,7 @@ include "./eventos_futuros/index.php";
     while ($row = $query_eventos_comuns->fetch_assoc()) {
     
         $id_galeria = $row['id_galeria'];
-        $sql_code_foto = "SELECT `path` FROM galeria WHERE id = $id_galeria";
+        $sql_code_foto = "SELECT `path` FROM galeria WHERE id = '$id_galeria'";
         $query_eventos_foto = $mysqli->query($sql_code_foto);
     ?>
     <section class="eventos">
@@ -145,3 +148,6 @@ include "./eventos_futuros/index.php";
     </div>
 
 </div>
+
+</body>
+</html
