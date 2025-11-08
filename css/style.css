@@ -63,17 +63,24 @@ header > ul li:hover {
 }
 
 main {
+  min-height: 80dvh;
   padding: 2rem var(--padding);
   background-color: var(--mainColor);
   display: flex;
   flex-direction: column;
   gap: 2rem;
+  text-align: center;
+
+  & h1 {
+    color: var(--light);
+  }
 }
 
-main section {
+main > section {
   padding: 1rem;
   border-radius: 1.5rem;
-
+  
+  text-align: left;
   background-color: var(--light);
   box-shadow: 20px 20px 24px #20331e, -20px -20px 24px #304d2e;
 }

@@ -40,7 +40,6 @@ if (isset($_POST['email'])) {
       header("Location: index.php");
     } else {
       // senha incorreta
-      echo "Senha incorreta";
       $verifySenha = false;
     }
   }

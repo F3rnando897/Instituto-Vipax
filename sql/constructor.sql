@@ -21,7 +21,7 @@ CREATE TABLE `eventos_futuros` (
   `id_eventos_comuns` int(11) NOT NULL,
   `data` date NOT NULL,
   `horario` time NOT NULL,
-  `preco` float(8,2) NOT NULL,
+  `preco` int NOT NULL,
   `vagas` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
@@ -129,19 +129,19 @@ VALUES ('Rapel', 'Uma experiência de aventura e superação, que une contato di
 
 -- Eventos futuros
 INSERT INTO eventos_futuros (id_eventos_comuns, data, horario, preco, vagas)
-VALUES (1 , '2025-12-20', '19:00:00', 70.5, 20);
+VALUES (1 , '2025-12-20', '19:00:00', 7050, 20);
 
 INSERT INTO eventos_futuros (id_eventos_comuns, data, horario, preco, vagas)
-VALUES (2 , '2025-12-23', '20:30:00', 100, 26);
+VALUES (2 , '2025-12-23', '20:30:00', 10000, 26);
 
 INSERT INTO eventos_futuros (id_eventos_comuns, data, horario, preco, vagas)
-VALUES (3 , '2025-11-03', '08:00:00', 40, 20);
+VALUES (3 , '2025-11-03', '08:00:00', 4000, 20);
 
 INSERT INTO eventos_futuros (id_eventos_comuns, data, horario, preco, vagas)
-VALUES (2 , '2025-11-12', '15:00:00', 120, 30);
+VALUES (2 , '2025-11-12', '15:00:00', 12000, 30);
 
 INSERT INTO eventos_futuros (id_eventos_comuns, data, horario, preco, vagas)
-VALUES (4 , '2025-12-05', '13:30:00', 400, 10);
+VALUES (4 , '2025-12-05', '13:30:00', 4000, 10);
 
 -- Objetivos
 INSERT INTO objetivos (titulo, texto)

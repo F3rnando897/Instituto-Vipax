@@ -7,6 +7,7 @@ if (!isset($_SESSION)){
 ?>
 
   <main id="pagina_galeria">
+    <h1>Galeria</h1>
     <section class="galeria">
       <?php 
         $ids = [];

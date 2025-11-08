@@ -36,6 +36,7 @@ if (!isset($_SESSION)){
     $sql_code = "SELECT eventos_comuns.nome as nome, 
                 eventos_comuns.id as id,
                 eventos_comuns.descricao as descricao,
+                eventos_futuros.id as id_futuro,
                 eventos_futuros.data as data,
                 eventos_futuros.horario as horario,
                 eventos_futuros.preco as preco,
@@ -59,7 +60,7 @@ if (!isset($_SESSION)){
       </div>
       <div class="actions">
         <a href="eventos.php?evento=<?= $row['id'] ?>" class="saiba-mais">Saiba mais</a>
-        <a type="button" class="btn-saiba-mais">Quero participar</a>
+        <a href="inscricao.php?evento=<?= $row['id_futuro']?>" type="button" class="btn-saiba-mais">Quero participar</a>
       </div>
     </section>
     <?php 

@@ -13,6 +13,25 @@ function mostrarHora($hora) {
   return implode(":", $hora);
 }
 
+function mostrarPreco($price) {
+  $price = strval($price);
+  $format = "";
+
+  for($i = strlen($price)-1; $i >= 0; $i--) {
+    if (strlen($price) - $i == 3) 
+      $format = ',' . $format;
+    
+    if ($i < strlen($price) - 3 && 
+      (strlen($price) - $i - 3) % 3 == 0)
+      $format = '.' . $format;
+    
+    $format = $price[$i] . $format;
+  }
+
+  return "R$".$format;
+  
+}
+
 function limpar_texto($str){ 
   return preg_replace("/[^0-9]/", "", $str); 
 }
