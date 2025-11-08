@@ -8,7 +8,6 @@
   <link rel="stylesheet" href="css/eventos.css">
   <link rel="stylesheet" href="css/galeria.css">
   <link rel="stylesheet" href="css/login.css">
-  <link rel="stylesheet" href="css/dashBoard.css">
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
