@@ -1,0 +1,135 @@
+body {
+  height: 100%;
+  height: 100%;
+  margin: 0;
+  background: var(--mainColor);
+  -webkit-font-smoothing: antialiased;
+}
+
+#dash {
+  display: flex;
+  width: 100%;
+  height: 100vh;
+}
+
+.dashboard-wrap {
+  background: var(--light);
+  padding: 20px;
+}
+
+.dashboard {
+  display: flex;
+  width: 100%;
+  height: 100%;
+}
+
+.sidebar {
+  width: 100%;
+  padding: 18px 14px;
+}
+
+.objetivo-card {
+  background: var(--light);
+  border-radius: 8px;
+  padding: 16px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  margin-bottom: 1rem;
+  margin-top: 5rem;
+  margin-left: 5rem;
+  margin-right: 5rem;
+}
+
+.menu-items {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+  margin-top: 8px;
+}
+
+.menu-items a {
+  text-decoration: none;
+  color: var(--dark);
+  font-size: 12px;
+  line-height: 1.1;
+  font-weight: 600;
+}
+
+main {
+  color: var(--light);
+  padding: 24px;
+}
+
+h3 {
+  color: var(--dark);
+  margin-top: 0;
+  display: flex;
+  font-weight: bold;
+}
+
+p {
+  color: var(--dark);
+  font-weight: bold;
+  text-align: left;
+  padding-top: 3rem;
+  padding-bottom: 3rem;
+}
+
+.buttons {
+  display: flex;
+  gap: 10px;
+  justify-content: flex-end;
+}
+
+.delete {
+  color: var(--dark);
+  text-decoration: none;
+  background-color: red;
+  padding: 5px 10px;
+  border-radius: 10px;
+  font-weight: bold;
+
+  & a {
+    color: var(--dark);
+    text-decoration: none;
+  }
+}
+
+.salvar {
+  color: var(--dark);
+  text-decoration: none;
+  background-color: green;
+  padding: 5px 10px;
+  border-radius: 10px;
+  font-weight: bold;
+
+  & a {
+    color: var(--dark);
+    text-decoration: none;
+  }
+}
+
+.criar-objetivo {
+  width: 10rem;
+  background: var(--light);
+  border-radius: 8px;
+  padding: 16px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  margin-bottom: 1rem;
+  margin-top: 1rem;
+  margin-left: 5rem;
+  margin-right: 5rem;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.criar-objetivo span i {
+  cursor: pointer;
+  font-size: 10px;
+  color: var(--dark);
+  padding: 10px;
+  background-color: gray;
+  border-radius: 10px;
+}
+
+
