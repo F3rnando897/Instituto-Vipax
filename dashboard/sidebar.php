@@ -38,6 +38,7 @@ if (strpos($_SERVER['HTTP_HOST'], 'localhost') !== false) {
     </div>
     <nav>
         <ul>
+            <li><a href="<?= BASE_URL; ?>">Site</a></li>
             <li><a href="<?= BASE_URL; ?>/dashboard">Dashboard</a></li>
             <li><a href="<?= BASE_URL; ?>/dashboard/objetivos">Objetivos</a></li>
             <li><a href="<?= BASE_URL; ?>/dashboard/eventos_comuns">Eventos comuns</a></li>
