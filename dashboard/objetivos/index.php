@@ -54,14 +54,14 @@ if (isset($_POST)) {
                 </form>
             </section>
             <?php } ?>
-            <section class="card create_objetivo">
+            <section class="card create">
                 <form method="post">
                     <h3>Criar novo</h3>
-                    <button class="btn" name="create_objetivo">+</button>
+                    <button class="btn" name="create_evento_comum">+</button>
                 </form>
             </section>
         </section>
     </main>
-    <script src="objetivos.js"></script>
+    <script src="ecomuns.js"></script>
 </body>
 </html>

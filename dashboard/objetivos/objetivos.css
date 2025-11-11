@@ -42,13 +42,13 @@ section.card .foot * {
 }
 
 
-.create_objetivo form{
+.create form{
   display: flex;
   justify-content: space-between;
   align-items: center;
 }
 
-#delete_objetivo section.card {
+#delete section.card {
   width: auto;
 }
 

@@ -8,7 +8,12 @@ if (!is_numeric($_GET['id'])) {
 if (isset($_POST['delete'])) {
     include '../../config/conexao.php';
     
-    $stmt = $mysqli->prepare("DELETE FROM objetivos WHERE id = ?");
+    $stmt = $mysqli->prepare("DELETE FROM galeria WHERE id_eventos_comuns = ?");
+    $stmt->bind_param("i", $_GET['id']);
+    $stmt->execute();
+    $stmt->close();
+    
+    $stmt = $mysqli->prepare("DELETE FROM eventos_comuns WHERE id = ?");
     $stmt->bind_param("i", $_GET['id']);
     $stmt->execute();
     $stmt->close();
@@ -18,8 +23,8 @@ if (isset($_POST['delete'])) {
 
 ?>
 
-<main id="delete_objetivo">
-    <h1>Deletar objetivo</h1>
+<main id="delete">
+    <h1>Deletar evento comum</h1>
     <section class="card">
         <form method="post" >
             <h2>Voce tem certeza?</h2>
