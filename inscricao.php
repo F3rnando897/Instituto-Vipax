@@ -1,5 +1,4 @@
 <?php 
-
 include 'header.php';
 if (!isset($_GET['evento']) || 
     !isset($_SESSION['id']) ||
@@ -22,17 +21,35 @@ $stmt->bind_param("i", $_GET['evento']);
 $stmt->execute();
 $evento = $stmt->get_result()->fetch_assoc();
 $stmt->close();
+if (!$evento || strtotime($evento['data']) < time()) header("Location: index.php");
+
+$erro_inscricao = 0;
+if (isset($_POST['inscrever'])) {
+    $stmt = $mysqli->prepare("INSERT INTO vagas_reservadas (id_evento, id_usuario, situacao) VALUES (? ,?, NULL)");
+    $stmt->bind_param("ii", $_GET['evento'], $_SESSION['id']);
+    if (!$stmt->execute()) {
+        $erro_inscricao = 1;
+    } else {
+        header("Location: index.php");
+    }
+    $stmt->close();
+}
+
 
 include 'config/funcs.php';
 ?>
 
 <main>
-    <h1>Inscricao para evento</h1>
+    <h1>Inscrição para evento</h1>
     <section>
-        <h2><?= $evento['nome'] ?></h2>
-        <p><?= mostrarData($evento['data']) ?> <?= mostrarHora($evento['horario']) ?></p>
-        <p>Vagas: <?= $evento['vagas'] ?></p>
-        <p><?= mostrarPreco($evento['preco']) ?></p>
-        <p><?= $evento['descricao'] ?></p>
+        <form method="post">
+            <h2><?= $evento['nome'] ?></h2>
+            <p><?= mostrarData($evento['data']) ?> <?= mostrarHora($evento['horario']) ?></p>
+            <p>Vagas: <?= $evento['vagas'] ?></p>
+            <p><?= mostrarPreco($evento['preco']) ?></p>
+            <p><?= $evento['descricao'] ?></p>
+            <br>
+            <button type="submit" class="btn-saiba-mais" name="inscrever"><span>Inscrever-se</span></button>
+        </form>
     </section>
 </main>

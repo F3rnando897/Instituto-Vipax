@@ -1,3 +1,11 @@
+* {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+
+  font-family: "Poppins", "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+}
+
 :root {
   --light: #f4f1de;
   --dark: #0d0d0d;
@@ -6,57 +14,95 @@
   --destaque: #6a994e;
   --red: #9f454d;
 
-  --padding: 4rem;
+  --padding: 2rem;
 }
 
 body{
-	height:100%;
-    height:100%;
-	margin:0;
 	background: var(--mainColor);
-	-webkit-font-smoothing:antialiased;
-}
-
-#dash{
-    display:flex;
-    width:100%;
-    height:100vh;
-}
-
-.dashboard-wrap{
-	background: var(--light); 
-    padding: 20px;
-}
-
-.dashboard{
-	display:flex;
-	width:100%;
-	height:100%;
-}
-
-.sidebar{
-	width: 100%;
-	padding: 18px 14px;
-}
-
-
-.menu-items{
-	display:flex;
-	flex-direction:column;
-	gap: 18px;
-	margin-top:8px;
-}
-
-.menu-items a{
-	text-decoration:none;
-	color: var(--dark);
-	font-size:12px;
-	line-height:1.1;
-	font-weight:600;
+	display: flex;
 }
 
 main{
-    color: var(--light);
-    padding: 24px;
+	width: 100%;
+	padding: var(--padding);
+    min-height:100vh;
+    display:flex;
+	flex-direction: column;
+	gap: 2em;
+	
+	color: var(--light);
 }
 
+ul :is(li, a) {
+	list-style: none;
+	text-decoration: none;
+}
+
+aside {
+	padding: 2em;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	gap: 2em;
+
+	background-color: var(--light);
+	color: var(--dark);
+
+	transition: 700ms ease-in-out;
+	
+	& nav ul{
+		display: none;
+	}
+}
+
+
+aside .sandwich i {
+	font-size: 2em;
+	cursor: pointer;
+}
+
+aside.open nav ul{
+	display: flex;
+	flex-direction: column;
+	gap: .7em;
+
+}
+
+aside nav :is(li, a) {
+	color: inherit;
+}
+
+section.content {
+    display: flex;
+    gap: 2em;
+    flex-wrap: wrap
+}
+
+section.card {
+	padding: 1rem;
+	border-radius: 1.5rem;
+	
+	text-align: left;
+	background-color: var(--light);
+	color: var(--dark);
+	box-shadow: 20px 20px 24px #20331e, -20px -20px 24px #304d2e;
+
+}
+
+.card {
+	display: flex;
+	flex-direction: column;
+}
+
+.btn {
+	padding: 0.5em;
+	border: 0;
+
+	font-weight: 700;
+  	font-size: 1rem;
+  	color: var(--dark);
+  	cursor: pointer;
+  	text-decoration: none;
+  	border-radius: .5em;
+  	background-color: var(--secColor);
+}
