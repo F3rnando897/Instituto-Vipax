@@ -21,6 +21,7 @@ if (strpos($_SERVER['HTTP_HOST'], 'localhost') !== false) {
     <link rel="stylesheet" href="<?= BASE_URL; ?>/dashboard/painel_de_controle/painel.css">
     <link rel="stylesheet" href="<?= BASE_URL; ?>/dashboard/objetivos/objetivos.css">
     <link rel="stylesheet" href="<?= BASE_URL; ?>/dashboard/galeria/galeria.css">
+    <link rel="stylesheet" href="<?= BASE_URL; ?>/dashboard/eventos_marcados/eventos_marcados.css">
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     
