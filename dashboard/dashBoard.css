@@ -80,7 +80,7 @@ section.content {
 
 section.card {
 	padding: 1rem;
-	border-radius: 1.5rem;
+	border-radius: .8em;
 	
 	text-align: left;
 	background-color: var(--light);

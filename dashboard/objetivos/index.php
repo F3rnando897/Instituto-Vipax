@@ -57,7 +57,7 @@ if (isset($_POST)) {
             <section class="card create">
                 <form method="post">
                     <h3>Criar novo</h3>
-                    <button class="btn" name="create_evento_comum">+</button>
+                    <button class="btn" name="create_objetivo">+</button>
                 </form>
             </section>
         </section>
