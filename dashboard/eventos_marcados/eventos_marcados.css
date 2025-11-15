@@ -1,0 +1,23 @@
+#marcados > section {
+    display: flex;
+    gap: 2em;
+    justify-content: space-evenly;
+    flex-wrap: wrap;
+}
+
+table td {
+    padding: .3em;
+}
+
+
+table input {
+    padding: .3em;
+    background-color: var(--secColor);
+    border: 0;
+    border-radius: .3em;
+
+    &:focus {
+        outline: 1px solid var(--dark);
+
+    }
+}

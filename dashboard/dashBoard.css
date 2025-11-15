@@ -86,10 +86,10 @@ section.card {
 	background-color: var(--light);
 	color: var(--dark);
 	box-shadow: 20px 20px 24px #20331e, -20px -20px 24px #304d2e;
-
+	
 }
 
-.card {
+.card{
 	display: flex;
 	flex-direction: column;
 }

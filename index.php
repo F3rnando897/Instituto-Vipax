@@ -8,6 +8,7 @@ if (!isset($_SESSION)){
 }
 ?>
 
+<!--
   <?php 
   $sql_code = "SELECT * FROM eventos_comuns";
   $query_eventos_comuns = $mysqli->query($sql_code);
@@ -30,6 +31,8 @@ if (!isset($_SESSION)){
    </div>
   </section>
   <?php }?>
+
+    -->
   <main id="index">
     <?php 
     $today = date('Y-m-d', time());

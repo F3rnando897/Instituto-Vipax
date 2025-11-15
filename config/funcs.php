@@ -13,7 +13,7 @@ function mostrarHora($hora) {
   return implode(":", $hora);
 }
 
-function mostrarPreco($price) {
+function mostrarPreco($price, bool $rs = true) {
   $price = strval($price);
   $format = "";
 
@@ -28,8 +28,14 @@ function mostrarPreco($price) {
     $format = $price[$i] . $format;
   }
 
-  return "R$".$format;
+  return $rs ? "R$".$format : $format;
   
+}
+
+function limpar_preco($str){ 
+  $str = str_replace(".", "", $str); 
+  $str = str_replace(",", ".", $str); 
+  return floatval($str);
 }
 
 function limpar_texto($str){ 
@@ -65,6 +71,22 @@ function verify($email, $senha, $nome = "Nome", $telefone = "19912341234") {
   }
 
   return $infos;
+}
+
+function selectEventos($name) {
+  include '../../config/conexao.php';
+
+  $stmt = $mysqli->prepare("SELECT * FROM eventos_comuns");
+  $stmt->execute();
+  $response = $stmt->get_result();
+  $stmt->close();
+
+  echo "<select name='$name' class='btn'>";
+  while ($row = $response->fetch_assoc()) {
+    echo "<option value='{$row['id']}'>{$row['nome']}</option>";
+  }
+  echo "</select>";
+  
 }
 
 ?>
