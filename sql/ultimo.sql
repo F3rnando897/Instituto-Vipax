@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1:3306
--- Tempo de geração: 17/11/2025 às 15:01
+-- Tempo de geração: 17/11/2025 às 18:39
 -- Versão do servidor: 9.1.0
 -- Versão do PHP: 8.3.14
 
@@ -11,12 +11,11 @@ SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
 SET time_zone = "+00:00";
 
-CREATE DATABASE vipax
-DEFAULT CHARACTER SET utf8
-DEFAULT COLLATE utf8_general_ci;
 
-USE vipax;
-
+/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
+/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
+/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
+/*!40101 SET NAMES utf8mb4 */;
 
 --
 -- Banco de dados: `vipax`
@@ -31,8 +30,8 @@ USE vipax;
 DROP TABLE IF EXISTS `eventos_comuns`;
 CREATE TABLE IF NOT EXISTS `eventos_comuns` (
   `id` int NOT NULL AUTO_INCREMENT,
-  `nome` varchar(255) COLLATE utf8mb4_general_ci NOT NULL,
-  `descricao` text COLLATE utf8mb4_general_ci,
+  `nome` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
+  `descricao` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci,
   `id_galeria` int DEFAULT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
@@ -66,13 +65,17 @@ CREATE TABLE IF NOT EXISTS `eventos_futuros` (
   `vagas` int NOT NULL,
   PRIMARY KEY (`id`),
   KEY `id_eventos_comuns` (`id_eventos_comuns`)
-) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=14 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Despejando dados para a tabela `eventos_futuros`
 --
 
-
+INSERT INTO `eventos_futuros` (`id`, `id_eventos_comuns`, `data`, `horario`, `preco`, `vagas`) VALUES
+(10, 1, '2025-12-10', '19:00:00', 8000, 30),
+(11, 5, '2025-12-18', '09:00:00', 150000, 16),
+(12, 2, '2025-12-20', '15:00:00', 5000, 30),
+(13, 8, '2025-12-21', '08:00:00', 10000, 10);
 
 -- --------------------------------------------------------
 
@@ -83,10 +86,11 @@ CREATE TABLE IF NOT EXISTS `eventos_futuros` (
 DROP TABLE IF EXISTS `galeria`;
 CREATE TABLE IF NOT EXISTS `galeria` (
   `id` int NOT NULL AUTO_INCREMENT,
-  `id_eventos_comuns` int,
-  `path` text COLLATE utf8mb4_general_ci NOT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+  `id_eventos_comuns` int DEFAULT NULL,
+  `path` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
+  PRIMARY KEY (`id`),
+  KEY `galeria_ibfk_1` (`id_eventos_comuns`)
+) ENGINE=InnoDB AUTO_INCREMENT=14 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Despejando dados para a tabela `galeria`
@@ -98,7 +102,9 @@ INSERT INTO `galeria` (`id`, `id_eventos_comuns`, `path`) VALUES
 (3, 3, 'galeria/cafe_da_manha.png'),
 (4, 4, 'galeria/curso.png'),
 (5, 5, 'galeria/vd.png'),
-(6, 6, 'galeria/pizza.png');
+(6, 6, 'galeria/pizza.png'),
+(12, 1, 'galeria/uploads/1763403788_pexels-cmonphotography-1809644.jpg'),
+(13, 5, 'galeria/uploads/1763403803_5452724.jpg');
 
 -- --------------------------------------------------------
 
@@ -109,8 +115,8 @@ INSERT INTO `galeria` (`id`, `id_eventos_comuns`, `path`) VALUES
 DROP TABLE IF EXISTS `objetivos`;
 CREATE TABLE IF NOT EXISTS `objetivos` (
   `id` int NOT NULL AUTO_INCREMENT,
-  `titulo` varchar(255) COLLATE utf8mb4_general_ci NOT NULL,
-  `texto` text COLLATE utf8mb4_general_ci,
+  `titulo` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
+  `texto` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
@@ -132,21 +138,22 @@ INSERT INTO `objetivos` (`id`, `titulo`, `texto`) VALUES
 DROP TABLE IF EXISTS `usuarios`;
 CREATE TABLE IF NOT EXISTS `usuarios` (
   `id` int NOT NULL AUTO_INCREMENT,
-  `nome` varchar(255) COLLATE utf8mb4_general_ci NOT NULL,
-  `email` varchar(255) COLLATE utf8mb4_general_ci NOT NULL,
-  `senha` varchar(255) COLLATE utf8mb4_general_ci NOT NULL,
-  `telefone` varchar(20) COLLATE utf8mb4_general_ci DEFAULT NULL,
-  `nivel` varchar(30) COLLATE utf8mb4_general_ci NOT NULL DEFAULT 'usuario',
+  `nome` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
+  `email` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
+  `senha` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
+  `telefone` varchar(20) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL,
+  `nivel` varchar(30) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL DEFAULT 'usuario',
   PRIMARY KEY (`id`),
   UNIQUE KEY `email` (`email`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Despejando dados para a tabela `usuarios`
 --
 
 INSERT INTO `usuarios` (`id`, `nome`, `email`, `senha`, `telefone`, `nivel`) VALUES
-(1, 'Usuario', 'Usuario@gmail.com', '$2y$10$Z0v8DI516lu6JAZ6drdbX.eZI1N1QCC81JpL8rZK5B9E0yOD0zz8q', '', 'usuario');
+(1, 'Usuario', 'Usuario@gmail.com', '$2y$10$Z0v8DI516lu6JAZ6drdbX.eZI1N1QCC81JpL8rZK5B9E0yOD0zz8q', '', 'usuario'),
+(2, 'admin', 'admin@gmail.com', '$2y$10$pDvUabqwmOUxiLDErZ/cDukSW4Hd8Zi6J4mABoHs875JzRy5LYJ7O', '', 'admin');
 
 -- --------------------------------------------------------
 
@@ -159,7 +166,7 @@ CREATE TABLE IF NOT EXISTS `vagas_reservadas` (
   `id` int NOT NULL AUTO_INCREMENT,
   `id_evento` int NOT NULL,
   `id_usuario` int NOT NULL,
-  `situacao` varchar(50) COLLATE utf8mb4_general_ci DEFAULT NULL,
+  `situacao` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL,
   PRIMARY KEY (`id`),
   KEY `id_evento` (`id_evento`),
   KEY `id_usuario` (`id_usuario`)
@@ -188,12 +195,8 @@ ALTER TABLE `eventos_futuros`
 --
 ALTER TABLE `galeria`
   ADD CONSTRAINT `galeria_ibfk_1` FOREIGN KEY (`id_eventos_comuns`) REFERENCES `eventos_comuns` (`id`);
- 
-
---
--- Restrições para tabelas `vagas_reservadas`
---
-ALTER TABLE `vagas_reservadas`
-  ADD CONSTRAINT `vagas_reservadas_ibfk_1` FOREIGN KEY (`id_evento`) REFERENCES `eventos_futuros` (`id`),
-  ADD CONSTRAINT `vagas_reservadas_ibfk_2` FOREIGN KEY (`id_usuario`) REFERENCES `usuarios` (`id`);
 COMMIT;
+
+/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
+/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
+/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
