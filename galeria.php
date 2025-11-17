@@ -36,7 +36,9 @@ if (!isset($_SESSION)){
     ?>
   <div class="modal">
     <a href="galeria.php" class="fechar">&times;</a>
-    <a href="galeria.php?img=<?= $ids[$idsPos-1];?>" class="prev">&#10094;</a>
+    <a 
+    href="galeria.php?img=<?= $idsPos != 0 ? $ids[$idsPos-1] : $ids[count($ids) - 1];?>" 
+    class="prev">&#10094;</a>
     
     <a href="galeria.php?img=<?php 
     if ($idsPos != count($ids) - 1){

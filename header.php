@@ -17,7 +17,9 @@
 
   <header>
     <div>
-      <h1>Vipax</h1>
+      <a href="index.php">
+        <h1>Vipax</h1>
+      </a>
       <?php 
       if (!isset($_SESSION)){
         session_start();
@@ -38,6 +40,10 @@
         echo "<li><a href='login.php'>Login</a></li>";
       } else {
         echo "<li><a href='logout.php'>Sair</a></li>";
+      }
+
+      if (isset($_SESSION['nivel']) && $_SESSION['nivel'] == 'admin') {
+        echo "<li><a href='dashboard/'>Dashboard</a></li>";
       }
       ?>
 

@@ -37,6 +37,7 @@ if (isset($_POST['email'])) {
       }
       $_SESSION['id'] = $user['id'];
       $_SESSION['nome'] = $user['nome'];
+      $_SESSION['nivel'] = $user['nivel'];
       header("Location: index.php");
     } else {
       // senha incorreta
