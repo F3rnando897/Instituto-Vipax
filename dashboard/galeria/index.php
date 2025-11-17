@@ -62,8 +62,11 @@ if (isset($_POST['create_foto'])) {
                             ?>
                             <div class="photo-card">
                                 <img src="<?php echo $imgPath; ?>" alt="Foto da Galeria">
+                                <a href="delete.php?id=<?php echo $row['id']; ?>" class="delete-link">Excluir</a>
+                                
                             </div>
                             <?php
+
                         }
                         $res->free();
                     } else {
