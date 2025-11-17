@@ -83,10 +83,9 @@ CREATE TABLE IF NOT EXISTS `eventos_futuros` (
 DROP TABLE IF EXISTS `galeria`;
 CREATE TABLE IF NOT EXISTS `galeria` (
   `id` int NOT NULL AUTO_INCREMENT,
-  `id_eventos_comuns` int NOT NULL,
+  `id_eventos_comuns` int,
   `path` text COLLATE utf8mb4_general_ci NOT NULL,
-  PRIMARY KEY (`id`),
-  KEY `id_eventos_comuns` (`id_eventos_comuns`)
+  PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
@@ -189,6 +188,7 @@ ALTER TABLE `eventos_futuros`
 --
 ALTER TABLE `galeria`
   ADD CONSTRAINT `galeria_ibfk_1` FOREIGN KEY (`id_eventos_comuns`) REFERENCES `eventos_comuns` (`id`);
+ 
 
 --
 -- Restrições para tabelas `vagas_reservadas`
@@ -197,7 +197,3 @@ ALTER TABLE `vagas_reservadas`
   ADD CONSTRAINT `vagas_reservadas_ibfk_1` FOREIGN KEY (`id_evento`) REFERENCES `eventos_futuros` (`id`),
   ADD CONSTRAINT `vagas_reservadas_ibfk_2` FOREIGN KEY (`id_usuario`) REFERENCES `usuarios` (`id`);
 COMMIT;
-
-/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
-/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
-/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;

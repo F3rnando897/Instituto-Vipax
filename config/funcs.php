@@ -82,6 +82,7 @@ function selectEventos($name) {
   $stmt->close();
 
   echo "<select name='$name' class='btn'>";
+  echo "<option value=''>Nenhum Evento</option>";
   while ($row = $response->fetch_assoc()) {
     echo "<option value='{$row['id']}'>{$row['nome']}</option>";
   }

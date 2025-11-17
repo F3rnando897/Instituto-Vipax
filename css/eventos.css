@@ -47,7 +47,7 @@
   overflow-y: scroll;
   padding: 1rem;
   border-radius: 1rem;
-  border: 0;
+  border: 2px solid var(--mainColor);
 
   position: fixed;
   transform: translate(-50%, -50%);
@@ -87,10 +87,12 @@
 
 #eventos .modal .galeria {
   display: flex;
+  align-items: flex-start;
   flex-wrap: wrap;
   gap: 1rem;
 
   & img {
+    max-height: 400px;
     max-width: 350px;
     border-radius: 0.5rem;
   }

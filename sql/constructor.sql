@@ -60,8 +60,7 @@ ALTER TABLE `eventos_futuros`
   ADD KEY `id_eventos_comuns` (`id_eventos_comuns`);
 
 ALTER TABLE `galeria`
-  ADD PRIMARY KEY (`id`),
-  ADD KEY `id_eventos_comuns` (`id_eventos_comuns`);
+  ADD PRIMARY KEY (`id`);
 
 ALTER TABLE `objetivos`
   ADD PRIMARY KEY (`id`);

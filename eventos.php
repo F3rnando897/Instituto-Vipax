@@ -11,16 +11,13 @@ if (!isset($_SESSION)){
     
     $sql_code = "SELECT eventos_comuns.nome AS nome,
                 eventos_comuns.id AS id,
-                galeria.path AS foto,
                 eventos_comuns.descricao AS descricao 
-                FROM eventos_comuns, galeria 
-                WHERE eventos_comuns.id_galeria = galeria.id 
-                OR galeria.id_eventos_comuns = eventos_comuns.id;";
+                FROM eventos_comuns;";
     $query_eventos_comuns = $mysqli->query($sql_code);
     while ($row = $query_eventos_comuns->fetch_assoc()) {
     ?>
     <section class="eventos">
-        <img src=<?= '"' . $row['foto'] . '"'; ?> alt="">
+        <!-- <img src=<?= '"' . $row['foto'] . '"'; ?> alt=""> -->
         <div class="conteudo">
           <h2><?= $row['nome']; ?></h2>
           <a href="eventos.php?evento=<?= $row['id'] ?>" type="button" class="btn-saiba-mais">Saiba mais</a>

@@ -3,8 +3,11 @@ include '../sidebar.php';
 include '../../config/conexao.php';
 
 ?>
+<body>
+    <main>
 <?php
 if (isset($_POST['create_foto'])) {
+    var_dump($_POST);
     if (isset($_FILES['foto']) && $_FILES['foto']['error'] === UPLOAD_ERR_OK) {
         $uploadTmp = $_FILES['foto']['tmp_name'];
         $originalName = basename($_FILES['foto']['name']);
@@ -18,9 +21,11 @@ if (isset($_POST['create_foto'])) {
         $targetPath = $uploadsDir . DIRECTORY_SEPARATOR . $safeName;
             if (move_uploaded_file($uploadTmp, $targetPath)) {
             $dbPath = 'galeria/uploads/' . $safeName;
-            $stmt = $mysqli->prepare("INSERT INTO galeria (path, id_eventos_comuns) VALUES (?, NULL)");
+            $stmt = $mysqli->prepare("INSERT INTO galeria (path, id_eventos_comuns) VALUES (?, ?)");
             if ($stmt) {
-                $stmt->bind_param('s', $dbPath);
+                if ($_POST['evento_comum'] == '') $_POST['evento_comum'] = null;
+                
+                $stmt->bind_param('si', $dbPath, $_POST['evento_comum']);
                 if (!$stmt->execute()) {
                     $dbErr = $mysqli->error;
                     echo '<div class="error">Erro ao salvar imagem: ' . htmlspecialchars($dbErr) . '</div>';
@@ -38,14 +43,13 @@ if (isset($_POST['create_foto'])) {
 }
 
 ?>
-<body>
-    <main>
         <h1>Galeria</h1>
         <section class="contentgaleria">
             <section class="card create">
                 <form method="post" enctype="multipart/form-data">
                     <h3>Adicionar Fotos</h3>
                     <input type="file" name="foto" accept="image/*" required />
+                    <?php include '../../config/funcs.php'; selectEventos("evento_comum") ?>
                     <button type="submit" class="btn" name="create_foto">Enviar</button>
                 </form>
             </section>

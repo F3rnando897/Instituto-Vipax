@@ -46,7 +46,7 @@ foreach ($data as $table => $v) {
                 </div>
                 <div class="body">
                     <p><?=  $data['galeria'] ?> fotos salvas</p>
-                    <a href="card/index.php">Visualizar</a>
+                    <a href="galeria/index.php">Visualizar</a>
 
                 </div>
             </section>
