@@ -24,32 +24,32 @@ if (!isset($_SESSION)){
         <div class="conteudo">
           <h2><?= $row['nome']; ?></h2>
           <a href="eventos.php?evento=<?= $row['id'] ?>" type="button" class="btn-saiba-mais">Saiba mais</a>
-          <div class='modal <?php 
-            if (isset($_GET['evento']) && $_GET['evento'] == $row['id']) {
-              unset($_GET);
-              echo "open";
-            }?>'>
-              <div class="content">
-                <h2><?= $row['nome']; ?></h2>
-                <a href="eventos.php">&times</a>
-                <p><?= $row['descricao'];?></p>
-              </div>
-              <?php 
-              $sql_code = "SELECT * FROM galeria WHERE id_eventos_comuns = ". $row['id'];
-              $query_galeria = $mysqli->query($sql_code);
-              if ($query_galeria->num_rows > 0) {
-              ?>
-              <div class="galeria">
-                <?php while ($foto = $query_galeria->fetch_assoc()){?>
-                
-                  <img src="<?= $foto['path'] ?>">
-
-                <?php }?>
-              </div>
-              <?php } ?>
-            </div>
         </div>
     </section>
+    <div class='modal <?php 
+      if (isset($_GET['evento']) && $_GET['evento'] == $row['id']) {
+        unset($_GET);
+        echo "open";
+      }?>'>
+        <div class="content">
+          <h2><?= $row['nome']; ?></h2>
+          <a href="eventos.php">&times</a>
+          <p><?= $row['descricao'];?></p>
+        </div>
+        <?php 
+        $sql_code = "SELECT * FROM galeria WHERE id_eventos_comuns = ". $row['id'];
+        $query_galeria = $mysqli->query($sql_code);
+        if ($query_galeria->num_rows > 0) {
+        ?>
+        <div class="galeria">
+          <?php while ($foto = $query_galeria->fetch_assoc()){?>
+          
+            <img src="<?= $foto['path'] ?>">
+
+          <?php }?>
+        </div>
+        <?php } ?>
+      </div>
     <?php 
     } 
     ?>

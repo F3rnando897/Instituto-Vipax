@@ -13,8 +13,8 @@
       <section>
         <h3>Atalhos</h3>
         <ul>
-          <li><a href="">Proximos eventos</a></li>
-          <li><a href="">Fotos dos eventos</a></li>
+          <li><a href="index.php">Proximos eventos</a></li>
+          <li><a href="galeria.php">Fotos dos eventos</a></li>
         </ul>
         <ul>
           <li><a href="index.php">Início</a></li>
