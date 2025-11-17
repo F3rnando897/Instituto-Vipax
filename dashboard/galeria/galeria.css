@@ -1,0 +1,21 @@
+.gallery-display {
+  padding: 1rem;
+  border-radius: 0.8em;
+  text-align: left;
+  background-color: var(--light);
+  color: var(--dark);
+  margin-top: 2rem;
+}
+
+.contentgaleria {
+  padding: 1em;
+}
+
+.photo-card {
+  width: 20rem;
+  height: 20rem;
+  overflow: hidden;
+  border-radius: 0.5em;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  object-fit: cover;
+}
