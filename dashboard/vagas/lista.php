@@ -20,7 +20,21 @@ if (!isset($_GET['id']) || !is_numeric($_GET['id'])) {
             <button class="btn" type="submit">Buscar</button>
         </form>
         <?php 
-        $stmt = $mysqli->prepare("SELECT 
+        if (isset($_GET['q']) && !empty($_GET['q'])) {
+            $search = "%" . $mysqli->real_escape_string($_GET['q']) . "%";
+            $stmt = $mysqli->prepare("SELECT 
+                    vagas_reservadas.id as id,
+                    usuarios.nome as nome, 
+                    usuarios.email as email,
+                    vagas_reservadas.situacao as situacao
+                    FROM vagas_reservadas, usuarios
+                    WHERE id_evento = ?
+                    AND usuarios.id = vagas_reservadas.id_usuario
+                    AND situacao IS NULL
+                    AND (usuarios.nome LIKE ? OR usuarios.email LIKE ?)");
+            $stmt->bind_param("iss", $_GET['id'], $search, $search);
+        } else {
+            $stmt = $mysqli->prepare("SELECT 
                     vagas_reservadas.id as id,
                     usuarios.nome as nome, 
                     usuarios.email as email
@@ -28,7 +42,8 @@ if (!isset($_GET['id']) || !is_numeric($_GET['id'])) {
                     WHERE id_evento = ?
                     AND usuarios.id = vagas_reservadas.id_usuario
                     AND situacao IS NULL");
-        $stmt->bind_param("i", $_GET['id']);
+            $stmt->bind_param("i", $_GET['id']);
+        }
         $stmt->execute();
         $response = $stmt->get_result();
 
@@ -53,7 +68,21 @@ if (!isset($_GET['id']) || !is_numeric($_GET['id'])) {
 
         <h2>Lista de presença</h2>
         <?php 
-        $stmt = $mysqli->prepare("SELECT 
+        if (isset($_GET['q']) && !empty($_GET['q'])) {
+            $search = "%" . $mysqli->real_escape_string($_GET['q']) . "%";
+            $stmt = $mysqli->prepare("SELECT 
+                    vagas_reservadas.id as id,
+                    usuarios.nome as nome, 
+                    usuarios.email as email,
+                    vagas_reservadas.situacao as situacao
+                    FROM vagas_reservadas, usuarios
+                    WHERE id_evento = ?
+                    AND usuarios.id = vagas_reservadas.id_usuario
+                    AND situacao = 'aprovado'
+                    AND (usuarios.nome LIKE ? OR usuarios.email LIKE ?)");
+            $stmt->bind_param("iss", $_GET['id'], $search, $search);
+        } else {
+            $stmt = $mysqli->prepare("SELECT 
                     vagas_reservadas.id as id,
                     usuarios.nome as nome, 
                     usuarios.email as email
@@ -61,7 +90,8 @@ if (!isset($_GET['id']) || !is_numeric($_GET['id'])) {
                     WHERE id_evento = ?
                     AND usuarios.id = vagas_reservadas.id_usuario
                     AND situacao = 'aprovado'");
-        $stmt->bind_param("i", $_GET['id']);
+            $stmt->bind_param("i", $_GET['id']);
+        }
         $stmt->execute();
         $response = $stmt->get_result();
 
