@@ -17,16 +17,15 @@ if (isset($_POST['save'])) {
   $id = $_POST['save'];
   $data = $_POST['data'.$id];
   $horario = $_POST['horario'.$id];
-  $preco = $_POST['preco'.$id];
-  $vagas = $_POST['vagas'.$id];
+  $preco = limpar_preco($_POST['preco'.$id]) * 100;
+  $vagas = intval($_POST['vagas'.$id]);
   
-  if (!is_numeric($id)) {
+  if (!is_numeric($id)
+      || $preco < 0
+      || $vagas < 1) {
     unset($_POST);
     header("Location: index.php");
   }
-
-
-  $preco = limpar_preco($preco) * 100;
 
   $stmt = $mysqli->prepare("UPDATE eventos_futuros SET data = ?, horario = ?, preco = ?, vagas = ? WHERE id = ?");
   $stmt->bind_param("ssiii", $data, $horario, $preco, $vagas, $id);
@@ -86,6 +85,7 @@ if (isset($_POST['save'])) {
             <td>
               <input 
               type="number"
+              min="1"
               name="vagas<?= $row['id']?>"
               value="<?= $row['vagas'] ?>" />
             </td>

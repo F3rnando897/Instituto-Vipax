@@ -7,6 +7,11 @@ if (!is_numeric($_GET['id'])) {
 
 if (isset($_POST['delete'])) {
     include '../../config/conexao.php';
+
+    $stmt1 = $mysqli->prepare("DELETE FROM eventos_futuros WHERE id_eventos_comuns = ?");
+    $stmt1->bind_param("i", $_GET['id']);
+    $stmt1->execute();
+    $stmt1->close();
     
     $stmt = $mysqli->prepare("DELETE FROM galeria WHERE id_eventos_comuns = ?");
     $stmt->bind_param("i", $_GET['id']);

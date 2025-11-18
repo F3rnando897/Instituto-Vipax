@@ -1,13 +1,16 @@
 <?php 
 if (!isset($_SESSION['id'])) session_start();
 
-// Verifica adm
-// if (){}
 
 if (strpos($_SERVER['HTTP_HOST'], 'localhost') !== false) {
     define('BASE_URL', '/Instituto-Vipax/');
 } else {
     define('BASE_URL', '/');
+}
+
+if ($_SESSION['nivel'] != "admin"){
+    header("Location: " . BASE_URL . "login.php");
+    exit();
 }
 ?>
 <!DOCTYPE html>
