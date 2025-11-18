@@ -1,0 +1,26 @@
+section.vagas {
+    display: flex;
+    flex-direction: column;
+    gap: 1em;
+}
+
+section.vagas .line {
+    background-color: var(--light);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    padding: 1em;
+    border-radius: .5em;
+    color: var(--dark);
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    & .foot {
+        display: flex;
+        gap: .5em;
+    }
+
+    & .foot :last-child {
+        background-color: var(--red);
+    }
+}

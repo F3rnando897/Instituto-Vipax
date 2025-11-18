@@ -1,67 +1,47 @@
 <?php
 include '../sidebar.php';
 include '../../config/conexao.php';
+include '../../config/funcs.php';
 
-?>
-<?php 
-
-if (isset($_POST['create_objetivo'])) {
-    $stmt = $mysqli->prepare("INSERT INTO objetivos (titulo, texto) VALUES ('', '')");
-    $stmt->execute();
-    $stmt->close();
-}
-
-if (isset($_POST)) {
-    foreach ($_POST as $k => $v) {
-        if ($k == "create_objetivo") continue;
-        if (str_starts_with($k, "text")) continue;
-        if (!is_numeric($k)) continue;
-
-        $stmt = $mysqli->prepare("UPDATE objetivos SET titulo = ?, texto = ? WHERE id = ?");
-        $stmt->bind_param("ssi", $v, $_POST['text'.$k], $k);        
-        $stmt->execute();
-        $stmt->close();
-    }
-}
 ?>
     <main>
-        <h1>Objetivos</h1>
-        <section class="content objetivos">
+        <h1>Vagas</h1>
+        <section class="content">
             <?php 
-            $stmt = $mysqli->prepare("SELECT * FROM objetivos");
+            $stmt = $mysqli->prepare("SELECT 
+                        eventos_futuros.id as id,
+                        eventos_comuns.nome as nome,
+                        eventos_futuros.data as data
+                        FROM eventos_futuros, eventos_comuns
+                        WHERE data > CURDATE() 
+                        AND eventos_futuros.id_eventos_comuns = eventos_comuns.id");
             $stmt->execute();
-            $response = $stmt->get_result();
-            $stmt->close();
-            while($row = $response->fetch_assoc()){
+            $response = $stmt->get_result();    
 
+
+            while ($row = $response->fetch_assoc()) {
             ?>
             <section class="card">
-                <form class="card" method="post">
-                    <div class="head">
-                        <input name="<?= $row['id'] ?>" 
-                        type="text" 
-                        value="<?= $row['titulo'] ?>"
-                        placeholder="Título">
-                    </div>
-                    <div class="body">
-                        <textarea name="text<?= $row['id'] ?>"
-                        placeholder="Texto..."><?= $row['texto'] ?></textarea>
-                    </div>
-                    <div class="foot">
-                        <a class="btn" href="delete.php?id=<?= $row['id'] ?>">Delete</a>
-                        <button class="btn" type="submit">Salvar</button>
-                    </div>
-                </form>
+                <h2><?= $row['nome'] ?></h2>
+                <p><?= mostrarData($row['data']) ?></p>
+                <p>
+                <?php 
+                // Quantidade de solicitações
+                $stmt2 = $mysqli->prepare("SELECT COUNT(*) as total 
+                            FROM vagas_reservadas
+                            WHERE id_evento = ?
+                            AND situacao IS NULL");
+                $stmt2->bind_param("i", $row['id']);
+                $stmt2->execute();
+                $response2 = $stmt2->get_result();
+                echo $response2->fetch_assoc()['total'];
+                
+                ?>    
+                solicitações</p>
+                <a href="lista.php?id=<?= $row['id'] ?>">Gerenciar ></a>
             </section>
             <?php } ?>
-            <section class="card create">
-                <form method="post">
-                    <h3>Criar novo</h3>
-                    <button class="btn" name="create_objetivo">+</button>
-                </form>
-            </section>
         </section>
     </main>
-    <script src="ecomuns.js"></script>
 </body>
 </html>
