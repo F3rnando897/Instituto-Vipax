@@ -92,7 +92,9 @@ main > section {
 
 main#index {
   flex-direction: row;
+  align-items: start;
 }
+
 
 #carrossel div {
   max-height: 90vh;

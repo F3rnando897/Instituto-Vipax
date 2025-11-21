@@ -8,31 +8,6 @@ if (!isset($_SESSION)){
 }
 ?>
 
-<!--
-  <?php 
-  $sql_code = "SELECT * FROM eventos_comuns";
-  $query_eventos_comuns = $mysqli->query($sql_code);
-  if ($query_eventos_comuns->num_rows > 0){
-  ?>
-  <section id="carrossel">
-   <div>
-    <?php 
-    while ($row = $query_eventos_comuns->fetch_assoc()){
-      if (!$row['id_galeria']) {
-        $sql_code = "SELECT * FROM galeria WHERE id_eventos_comuns = {$row['id']}";
-      } else {
-        $sql_code = "SELECT * FROM galeria WHERE id = {$row['id_galeria']}";
-      }
-      $query_galeria = $mysqli->query($sql_code);
-      $row_galeria = $query_galeria->fetch_assoc();
-    ?>
-    <img <?= "src='{$row_galeria['path']}' alt='{$row['nome']}'"; ?>>
-    <?php } ?>
-   </div>
-  </section>
-  <?php }?>
-
-    -->
   <main id="index">
     <?php 
     $today = date('Y-m-d', time());

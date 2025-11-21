@@ -10,6 +10,8 @@ if (isset($_POST['email'])) {
   $nome = $_POST['nome'];
   $telefone = limpar_texto($_POST['telefone']);
   $verificacao = verify($email, $senha, $nome, $telefone);
+  $verificacao['emailUsavel'] = true;
+
 
   $ok = true;
   foreach($verificacao as $k => $v) {
