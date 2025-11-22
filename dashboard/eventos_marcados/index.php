@@ -108,7 +108,7 @@ if (isset($_POST['save'])) {
       <div>
 
         <?php 
-        selectEventos("novo_evento");
+        selectEventos("novo_evento", false);
         ?>
       <button class="btn">+</button>
     </div>

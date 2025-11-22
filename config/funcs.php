@@ -73,7 +73,7 @@ function verify($email, $senha, $nome = "Nome", $telefone = "19912341234") {
   return $infos;
 }
 
-function selectEventos($name) {
+function selectEventos($name, $any = true) {
   include '../../config/conexao.php';
 
   $stmt = $mysqli->prepare("SELECT * FROM eventos_comuns");
@@ -82,7 +82,10 @@ function selectEventos($name) {
   $stmt->close();
 
   echo "<select name='$name' class='btn'>";
-  echo "<option value=''>Nenhum Evento</option>";
+  if ($any) {
+    echo "<option value=''>Nenhum Evento</option>";
+
+  }
   while ($row = $response->fetch_assoc()) {
     echo "<option value='{$row['id']}'>{$row['nome']}</option>";
   }
