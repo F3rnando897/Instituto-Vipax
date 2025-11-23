@@ -46,7 +46,7 @@ if (!isset($_SESSION)){
     }
     ?>
   </main>
-
+<script src="js/main.js"></script>
 <?php 
 include "footer.php";
 ?>
