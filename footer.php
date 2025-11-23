@@ -6,8 +6,8 @@
         <h3>Fale Conosco</h3>
         <ul>
           <li><a href="https://www.instagram.com/monicaprado.constelacao/" target="_blank"><img src="assets/instagram.png" alt="Instagram"> @monicaprado.constelacao</a></li>
-          <li><a href="https://api.whatsapp.com/send/?phone=5519999481842&text=Ol%C3%A1%21+Sigo+seu+perfil+no+Instagram+e+gostaria+de+falar+sobre+a+Constela%C3%A7%C3%A3o&type=phone_number&app_absent=0" target="_blank"><img src="assets/whatsapp.png" alt="Whatsapp"> (19) 99948-1842</a></li>
-          <li><a href="mailto:vipax@gmail.com" target="_blank"><img src="assets/email.png" alt="Email"> vipax@gmail.com</a></li>
+          <li><a href="https://wa.me/5519999481842?text=Ola!%20Vim%20pelo%20site%20e%20gostaria%20de%20saber%20mais%20sobre%20os%20eventos." target="_blank"><img src="assets/whatsapp.png" alt="Whatsapp"> (19) 99948-1842</a></li>
+          <!-- <li><a href="mailto:vipax@gmail.com" target="_blank"><img src="assets/email.png" alt="Email"> vipax@gmail.com</a></li> -->
         </ul>
       </section>
       <section>
