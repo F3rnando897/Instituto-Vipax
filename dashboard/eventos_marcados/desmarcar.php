@@ -24,7 +24,7 @@ if (isset($_POST['delete'])) {
 ?>
 
 <main id="delete_objetivo">
-    <h1>Deletar objetivo</h1>
+    <h1>Desmarcar evento</h1>
     <section class="card">
         <form method="post" >
             <h2>Voce tem certeza?</h2>

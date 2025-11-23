@@ -47,7 +47,6 @@ if (!isset($_SESSION)){
     ?>
   </main>
 
-<script src="js/slide.js" type="module"></script>
 <?php 
 include "footer.php";
 ?>

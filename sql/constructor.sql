@@ -86,6 +86,9 @@ CREATE TABLE IF NOT EXISTS `usuarios` (
   UNIQUE KEY `email` (`email`)
 ) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
+INSERT INTO `usuarios` (`id`, `nome`, `email`, `senha`, `telefone`, `nivel`) VALUES
+(1, 'admin', 'admin@gmail.com', '$2y$10$pDvUabqwmOUxiLDErZ/cDukSW4Hd8Zi6J4mABoHs875JzRy5LYJ7O', '', 'admin');
+
 --
 -- Estrutura para tabela `vagas_reservadas`
 --

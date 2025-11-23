@@ -23,6 +23,14 @@ $evento = $stmt->get_result()->fetch_assoc();
 $stmt->close();
 if (!$evento || strtotime($evento['data']) < time()) header("Location: index.php");
 
+function redirect($evento = "Evento nao encontrado", $data = "") {
+    $nome = isset($_SESSION['nome']) ? $_SESSION['nome'] : "Nome nao encontrado";
+    $msg = "Ola! Meu nome é {$nome}. \nMe interessei pelo {$evento} do dia {$data}! Quero me inscrever!";
+    $msg = urlencode($msg);
+    header("Location: https://api.whatsapp.com/send?phone=5519999481842&text={$msg}");
+    exit();
+}
+
 $erro_inscricao = 0;
 if (isset($_POST['inscrever'])) {
     $stmt = $mysqli->prepare("INSERT INTO vagas_reservadas (id_evento, id_usuario, situacao) VALUES (? ,?, NULL)");
@@ -30,7 +38,8 @@ if (isset($_POST['inscrever'])) {
     if (!$stmt->execute()) {
         $erro_inscricao = 1;
     } else {
-        header("Location: index.php");
+        include 'config/funcs.php';
+        redirect($evento['nome'], mostrarData($evento['data']));
     }
     $stmt->close();
 }

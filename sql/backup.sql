@@ -26,8 +26,7 @@ INSERT INTO `galeria` (`id`, `id_eventos_comuns`, `path`) VALUES
 
 -- Usuarios
 INSERT INTO `usuarios` (`id`, `nome`, `email`, `senha`, `telefone`, `nivel`) VALUES
-(1, 'Usuario', 'Usuario@gmail.com', '$2y$10$Z0v8DI516lu6JAZ6drdbX.eZI1N1QCC81JpL8rZK5B9E0yOD0zz8q', '', 'usuario'),
-(2, 'admin', 'admin@gmail.com', '$2y$10$pDvUabqwmOUxiLDErZ/cDukSW4Hd8Zi6J4mABoHs875JzRy5LYJ7O', '', 'admin'),
+(2, 'Usuario', 'Usuario@gmail.com', '$2y$10$Z0v8DI516lu6JAZ6drdbX.eZI1N1QCC81JpL8rZK5B9E0yOD0zz8q', '', 'usuario'),
 (3, 'Ana Lima', 'ana.lima@example.com', '$2y$10$Yg7nT4GJm9E1qXa8kLsJ4O1tTq3tP8vJZxx', '11911111111', 'usuario'),
 (4, 'Bruno Martins', 'bruno.martins@example.com', '$2y$10$Yg7nT4GJm9E1qXa8kLsJ4O1tTq3tP8vJZxx', '11922222222', 'usuario'),
 (5, 'Carla Souza', 'carla.souza@example.com', '$2y$10$Yg7nT4GJm9E1qXa8kLsJ4O1tTq3tP8vJZxx', '11933333333', 'usuario'),
